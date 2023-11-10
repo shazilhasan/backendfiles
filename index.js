@@ -1,21 +1,26 @@
 const express = require('express');
-
 const bodyParser = require('body-parser');
 const db = require('./db');
 const userRoutes = require('./route/userRoute'); // Adjust the path based on your folder structure
 const studentRoutes = require('./route/studentRoutes'); // Adjust the path based on your folder structure
-const recruiterRoutes = require('./route/recruiterRoute')
-const reasonofRejectionRoutes = require('./route/rejectionStudentRoute')
+const recruiterRoutes = require('./route/recruiterRoute');
+const reasonofRejectionRoutes = require('./route/rejectionStudentRoute');
 const cors = require('cors');
 const app = express();
 const path = require('path');
+
+// Define the absolute path for serving static files
 const absoluteUploadsPath = path.join(__dirname, 'my-project');
-app.use( express.static(absoluteUploadsPath))
-app.use('/*', fucntion(req, res) {
+app.use(express.static(absoluteUploadsPath));
+
+// Catch-All Route for Single-Page Application (SPA)
+app.use('/*', function (req, res) {
   res.sendFile(path.join(absoluteUploadsPath, 'index.html'));
 });
+
 const PORT = 3000;
-console.log('.//////////////////////////////////////////////////////////////')
+console.log('.//////////////////////////////////////////////////////////////');
+
 app.use(cors());
 
 // Middleware
@@ -40,7 +45,10 @@ app.use('/apis/users', userRoutes);
 app.use('/apis/students', studentRoutes);
 app.use('/apis/recruiters', recruiterRoutes);
 app.use('/apis/reasonofRejection', reasonofRejectionRoutes);
+
+// Serving static assets from 'assets' directory
 app.use(express.static('assets'));
+
 // Test route
 app.get('/', (req, res) => {
   res.send('Server is running, database is connected');
