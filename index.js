@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 app.use(express.static(absoluteUploadsPath));
 
 // Define a catch-all route for the SPA (Angular app)
-app.get('/app/*', (req, res, next) => {
+app.get('*', (req, res, next) => {
   res.sendFile(path.join(absoluteUploadsPath, 'index.html'));
 });
 // Connect to the database
