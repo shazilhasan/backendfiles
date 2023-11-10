@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/7c537098-7a87-4445-8945-6e0420e5c565/resourceGroups/portaltechnologics_group/providers/Microsoft.Web/sites/portaltechnologics",
+    "appService.deploySubpath": "."
+}
