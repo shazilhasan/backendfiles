@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 app.use(express.static(absoluteUploadsPath));
 
 // Define a catch-all route for the SPA (Angular app)
-app.use('*', (req, res, next) => {
+app.use('/app/*', (req, res, next) => {
   res.sendFile(path.join(absoluteUploadsPath, 'index.html'));
 });
 
@@ -50,7 +50,7 @@ db.connect()
     app.use(express.static('assets'));
 
     // Test route
-    app.use('*', (req, res , next) => {
+    app.use('/app/*', (req, res , next) => {
       res.send('Server is running, database is connected');
     });
 
