@@ -11,7 +11,7 @@ const app = express();
 const path = require('path');
 const absoluteUploadsPath = path.join(__dirname, 'my-project');
 app.use( express.static(absoluteUploadsPath))
-app.get('*', (req, res) => {
+app.use('/*', fucntion(req, res) {
   res.sendFile(path.join(absoluteUploadsPath, 'index.html'));
 });
 const PORT = 3000;
