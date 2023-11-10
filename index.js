@@ -33,8 +33,8 @@ app.use(express.static(absoluteUploadsPath));
 app.use('/app/*', (req, res, next) => {
   res.sendFile(path.join(absoluteUploadsPath, 'index.html'));
 });
-app.use('*',(req, res, next) => {
-  res.sendFile(path.join(absoluteUploadsPath,));
+app.get('/student-register', (req, res) => {
+};
 // Connect to the database
 db.connect()
   .then(() => {
